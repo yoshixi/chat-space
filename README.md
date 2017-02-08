@@ -1,35 +1,52 @@
 
+## users table
 
-#users table
+| columns    | type        |  restriction |
+|:-----------|------------:|:------------:|
+| name       |      string | null false   |
+| email      |      string | null false   |
+| password   |      string | null false   |
+
+### assosiation
+
+` has_many :messages `  
+` has_many :users_groups`  
+` has_many :groups , :through => users_groups `
+
+## groups table
 
 | columns    | type        |  restriction |
 |:-----------|------------:|:------------:|
 | name       |      string | null false   |
 
+### assosiation
 
+` has_many :messages `
+` has_many :users_groups`  
+` has_many :users , :through => users_groups `
 
-
-
-#groups table
+## messages table
 
 | columns    | type        |  restriction |
 |:-----------|------------:|:------------:|
-| name       |      string | null false   |
-
-
-
-#chat table
-| columns    | type        |  restriction |
-|:-----------|------------:|:------------:|
-| name       |      string | null false   |
 | text       |      string |              |
-| group_id   |     integer | null false   |
-| user_id    |     integer |  null false   |
+| image      |      string |              |
+| group_id   |     integer |  null false  |
+| user_id    |     integer |  null false  |
 
+### assosiation
 
+` belongs_to :user `  
+` belongs_to :group `
 
-#users_groups table
+## users_groups table
+
 | columns    | type        |  restriction |
 |:-----------|------------:|:------------:|
 | user_id    |     integer | null false   |
 | group_id   |     integer | null false   |
+
+### assosiation
+
+` belongs_to :user `  
+` belongs_to :group `
