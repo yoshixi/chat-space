@@ -11,7 +11,7 @@
 
 ` has_many :messages `  
 ` has_many :users_groups`  
-` has_many :groups , :through => users_groups `
+` has_many :groups, through: :users_groups `
 
 ## groups table
 
@@ -23,16 +23,16 @@
 
 ` has_many :messages`      
 ` has_many :users_groups`   
-` has_many :users , :through => users_groups `
+` has_many :users, through: :users_groups `
 
 ## messages table
 
-| columns    | type        |  restriction |
-|:-----------|------------:|:------------:|
-| text       |      string |              |
-| image      |      string |              |
-| group_id   |     integer |  null false  |
-| user_id    |     integer |  null false  |
+| columns    | type        |  restriction     |
+|:-----------|------------:|:----------------:|
+| text       |      string |                  |
+| image      |      string |                  |
+| group_id   |     integer | foreign_key true |
+| user_id    |     integer | foreign_key true |
 
 ### assosiation
 
@@ -41,10 +41,10 @@
 
 ## users_groups table
 
-| columns    | type        |  restriction |
-|:-----------|------------:|:------------:|
-| user_id    |     integer | null false   |
-| group_id   |     integer | null false   |
+| columns    | type        |  restriction     |
+|:-----------|------------:|:----------------:|
+| user_id    |     integer | foreign_key true |
+| group_id   |     integer | foreign_key true |
 
 ### assosiation
 
