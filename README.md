@@ -27,12 +27,12 @@
 
 ## messages table
 
-| columns    | type        |  restriction     |
-|:-----------|------------:|:----------------:|
-| text       |      string |                  |
-| image      |      string |                  |
-| group_id   |     integer | foreign_key true |
-| user_id    |     integer | foreign_key true |
+| columns    | type        |  restriction                |
+|:-----------|------------:|:---------------------------:|
+| text       |      string |                             |
+| image      |      string |                             |
+| group_id   |     integer | foreign_key true, null false|
+| user_id    |     integer | foreign_key true, null false|
 
 ### assosiation
 
@@ -41,10 +41,10 @@
 
 ## users_groups table
 
-| columns    | type        |  restriction     |
-|:-----------|------------:|:----------------:|
-| user_id    |     integer | foreign_key true |
-| group_id   |     integer | foreign_key true |
+| columns    | type        |  restriction                |
+|:-----------|------------:|:---------------------------:|
+| user_id    |     integer | foreign_key true, null false|
+| group_id   |     integer | foreign_key true, null false|
 
 ### assosiation
 
