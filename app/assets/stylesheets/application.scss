@@ -1,0 +1,166 @@
+@import "./reset";
+@import "./clearfix";
+$lightBlue: #38aef0;
+$bgLtop: #253141;
+$bgLbottom: #2f3e51;
+$txtRightColor: #434A54;
+$msgColor: #434A54;
+
+.box46 {
+  height: 46px;
+  width: 100%;
+}
+.box20 {
+  height: 20px;
+  width: 100%;
+}
+body,html {
+  height: 100%;
+}
+.wrap {
+  width: 100%;
+}
+.header {
+  height: 30px;
+  width: 100%;
+  background-color: $lightBlue;
+  text-align: center;
+  &__txt {
+    color: #fff;
+  }
+}
+.wrap {
+  height: calc(100% - 30px);
+}
+.contents  {
+  @include clearfix();
+  height: 100%;
+  &__left {
+    float: left;
+    height: 100%;
+    width: 300px;
+    &__top {
+      height: 100px;
+      width: 260px;
+      padding: 0 20px;
+      background-color: $bgLtop;
+      .name {
+        height: 20px;
+        padding-top: 35px;
+        margin-bottom: 15px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px
+        }
+      .members {
+        font-size: 11px;
+        height: 12px;
+        color: #999;
+      }
+    }
+    &__bottom {
+      height: 100%;
+      width: 260px;
+      padding: 0 20px;
+      background-color: $bgLbottom;
+      ul li {
+        .gname {
+          font-size: 15px;
+          font-weight: bold;
+          margin-bottom: 10px;
+          color: #FFF;
+        }
+        .lmsg {
+          font-size: 11px;
+          color: #fff;
+          margin-bottom: 40px;
+        }
+      }//ul li
+    }
+  }
+  &__right {
+    float: left;
+    width: calc(100% - 300px - 80px);
+    height: 100%;
+    &__top {
+      height: 100px;
+      width: 100%;
+      padding: 0 40px ;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+      .gpname {
+        height: 20px;
+        padding-top: 35px;
+        margin-bottom: 15px;
+        font-color: #333;
+        font-size: 20px
+      }
+      .members {
+        font-size: 11px;
+        height: 12px;
+        color: #999;
+      }
+    }
+    &__bottom {
+      height: calc(100% - 130px);
+      width: 100%;
+      padding: 0 40px;
+      ul li {
+        .chatName {
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: 10px;
+          span.time {
+            font-weight: normal;
+            color: #999;
+            margin-left: 10px;
+            font-size: 12px;
+          }
+        }
+        .message {
+          font-size: 14px;
+          color: $msgColor;
+          margin-bottom: 45px;
+        }
+      }//ul li
+
+    }
+
+  }//&__right
+}
+  .footer {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      .leftbox {
+        width: 300px;
+        height: 90px;
+        background: $bgLbottom;
+        float: left;
+      }
+    .postArea {
+      padding: 20px 40px;
+      background: #eee;
+      width: calc(100% - 380px);
+      height: 50px;
+      float: right;
+      .msg {
+        float: left;
+        padding: 0  10px;
+        height: 50px;
+        width: 78%;
+      }
+      .btn {
+        width: 20%;
+        float: left;
+        margin-left: 15px;
+        height: 50px;
+        width: 100px;
+        background: $lightBlue;
+        border:none;
+        color: #FFF;
+        font-size: 16px;
+      }
+    }
+  }
