@@ -1,0 +1,58 @@
+!!!
+%html{:lang => "ja"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "UTF-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "ie=edge", "http-equiv" => "X-UA-Compatible"}/
+    %title Document
+    %link{:href => "style.css", :rel => "stylesheet"}/
+    %link{:href => "sample.scss", :rel => "stylesheet"}/
+  %body
+    .wrap
+      .header
+        %p.header__txt チャットグループが作成されました。
+      .contents
+        .contents__left
+          .contents__left__top
+            %p.name User Name
+          .contents__left__bottom
+            .box20
+            %ul
+              %li
+                %p.gname group name
+                %p.lmsg last message
+              %li
+                %p.gname group name
+                %p.lmsg last message
+              %li
+                %p.gname group name
+                %p.lmsg last message
+        .contents__right
+          .wrap
+            .contents__right__top
+              %p.gpname sample グループ
+              %p.members Members: yoshiki
+            .contents__right__bottom
+              .box46
+              %ul
+                %li
+                  %p.chatName
+                    name name
+                    %span.time 2017/02/08 07:00:55
+                  %p.message heloo hello hello
+                %li
+                  %p.chatName
+                    name name
+                    %span.time 2017/02/08 07:00:55
+                  %p.message heloo hello hello
+                %li
+                  %p.chatName
+                    name name
+                    %span.time 2017/02/08 07:00:55
+                  %p.message heloo hello hello
+        .footer
+          .leftbox
+          %form.postArea
+            %input.msg{:placeholder => "type a", :type => "text"}/
+            %button.btn{:type => "submit"} Send
