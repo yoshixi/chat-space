@@ -15,7 +15,11 @@
       .contents
         .contents__left
           .contents__left__top
-            %p.name User Name
+            %p.name
+              User Name
+            %p.awesome
+              %i.fa.fa-pencil-square-o
+              %i.fa.fa-cog
           .contents__left__bottom
             .box20
             %ul
@@ -54,6 +58,7 @@
         .footer
           .leftbox
           %form.postArea
-            %input.msg{:placeholder => "type a", :type => "text"}/
+            .msgbox
+              %input.msg{:placeholder => "  type a", :type => "text"}
+              %i.fa.fa-picture-o
             %button.btn{:type => "submit"} Send
-            fa_icon "camera-retro"
