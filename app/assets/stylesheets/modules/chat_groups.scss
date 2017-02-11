@@ -31,7 +31,7 @@ body,html {
       height: 100px;
       width: 260px;
       padding: 0 20px;
-      background-color: $bgLtop;
+      background-color: $bgLeftTop;
       position: relative;
       .name {
         height: 20px;
@@ -55,7 +55,7 @@ body,html {
       height: 100%;
       width: 260px;
       padding: 0 20px;
-      background-color: $bgLbottom;
+      background-color: $bgLeftBottom;
       ul li {
         .gname {
           font-size: 15px;
@@ -127,7 +127,7 @@ body,html {
       .leftbox {
         width: 300px;
         height: 90px;
-        background: $bgLbottom;
+        background: $bgLeftBottom;
         float: left;
       }
     .postArea {
