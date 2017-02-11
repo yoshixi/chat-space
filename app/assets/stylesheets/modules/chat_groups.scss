@@ -11,7 +11,6 @@ body,html {
 }
 .header {
   height: 30px;
-  width: 100%;
   background-color: $lightBlue;
   text-align: center;
   &__txt {
@@ -74,8 +73,6 @@ body,html {
   }
   &__right {
     float: left;
-    width: calc(100% - 300px - 80px);
-    height: 100%;
     &__top {
       height: 100px;
       width: 100%;
