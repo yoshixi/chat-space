@@ -45,9 +45,11 @@ body,html {
       .awesome {
         float: right;
         padding-top: 35px;
-        color: $white;
-        i.fa{
-          font-size: 20px
+        a {
+          color: $white;
+          i.fa{
+            font-size: 20px
+          }
         }
       }
     }

@@ -1,14 +1,14 @@
 .wrap
-  .header
-    %p.header__txt チャットグループが作成されました。
   .contents
     .contents__left
       .contents__left__top
         %p.name
           User Name
         %p.awesome
-          %i.fa.fa-pencil-square-o
-          %i.fa.fa-cog
+          = link_to  do
+            %i.fa.fa-pencil-square-o
+          = link_to edit_user_registration_path do
+            %i.fa.fa-cog
       .contents__left__bottom
         .box20
         %ul
