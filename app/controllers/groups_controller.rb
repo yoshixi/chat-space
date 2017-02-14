@@ -1,9 +1,9 @@
-class ChatGroupsController < ApplicationController
+class GroupsController < ApplicationController
   def index
     #code
   end
   def new
-    #code
+    @group = Group.new
   end
   def edit
     #code
