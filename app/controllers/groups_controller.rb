@@ -7,11 +7,19 @@ class GroupsController < ApplicationController
   end
   def create
     @group =  Group.new(group_params)
-    binding.pry
     @group.save
+    redirect_to action: :index
   end
   def edit
-    #code
+    @group = Group.find(params[:id])
+  end
+  def update
+    @group = Group.find(params[:id])
+    if @group.update_attributes(group_params)
+      redirect_to action: :index
+    else
+      render 'new'
+    end
   end
 
   private
