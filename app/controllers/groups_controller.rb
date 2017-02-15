@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   def index
-    #code
+    binding.pry
   end
   def new
     @group = Group.new
