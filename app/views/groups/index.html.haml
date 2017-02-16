@@ -12,15 +12,12 @@
       .contents__left__bottom
         .box20
         %ul
-          %li
-            %p.gname group name
-            %p.lmsg last message
-          %li
-            %p.gname group name
-            %p.lmsg last message
-          %li
-            %p.gname group name
-            %p.lmsg last message
+          - @groups.each do |g|
+            %li
+              %p.gname
+                = g.name
+              %p.lmsg last message
+
     .contents__right
       .wrap
         .contents__right__top
