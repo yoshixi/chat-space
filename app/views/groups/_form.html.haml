@@ -13,11 +13,13 @@
       #user-search-result
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
-      -if controller.action_name == "new"
-
-      -else
-        = f.label :name, "チャットメンバー", class: "chat-group-form__label"
+      = f.label :name, "チャットメンバー", class: "chat-group-form__label"
     .chat-group-form__field--right
+      -if controller.action_name == "new"
+        %p.chat-member= current_user.name
+      -else
+        - @group.users.each do |u|
+          %p.chat-member= u.name
   .chat-group-form__field.clearfix
     .chat-group-form__field--right
       = f.submit :name, value: "SAVE", disable_with: "Save Now ...", class: "chat-group-form__action-btn"
