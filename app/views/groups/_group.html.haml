@@ -2,4 +2,6 @@
   %li
     %p.gname
       = group.name
-    %p.lmsg last message
+    %p.lmsg
+      -if group.messages.present?
+        = group.messages.last.text

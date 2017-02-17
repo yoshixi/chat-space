@@ -1,6 +1,7 @@
 %li
   %p.chatName
     = message.user.name
-    %span.time 2017/02/08 07:00:55
+    %span.time
+      = message.created_at.to_s.gsub(/-/,"/")
   %p.message
     = message.text
