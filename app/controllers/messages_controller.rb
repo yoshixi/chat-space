@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
     @groups = current_user.groups
     @group = Group.find(params[:group_id])
     @message =  Message.new
-    @messages = current_user.messages
+    @messages = @group.messages
     @members = @group.users
   end
 
