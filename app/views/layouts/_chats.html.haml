@@ -1,0 +1,37 @@
+.wrap
+  .contents
+    .contents__left
+      .contents__left__top
+        %p.name
+          = current_user.name
+        %p.awesome
+          = link_to  new_group_path do
+            %i.fa.fa-pencil-square-o
+          = link_to edit_user_registration_path do
+            %i.fa.fa-cog
+      .contents__left__bottom
+        .box20
+        %ul
+          = render @groups
+    .contents__right
+      .wrap
+        .contents__right__top
+          %p.gpname
+            = @group.name if @group
+          %p.members
+            %span Members:
+            = render partial: 'member', collection: @members
+        .contents__right__bottom
+          .box46
+          - if @messages
+            %ul
+              = render @messages
+
+  - if controller.controller_name == "messages"
+    .footer
+      .leftbox
+      = form_for @message, url: {action: 'create'},html:{class: 'postArea'} do |g|
+        .msgbox
+          = g.text_field :text,  placeholder: "  type a text", class: "msg"
+          %i.fa.fa-picture-o
+        = g.submit  value: "Send", class: "btn",disable_with: "submiting"

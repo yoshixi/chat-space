@@ -1,4 +1,5 @@
-%li
-  %p.gname
-    = group.name
-  %p.lmsg last message
+=link_to  group_messages_path(group.id) do
+  %li
+    %p.gname
+      = group.name
+    %p.lmsg last message
