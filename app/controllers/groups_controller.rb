@@ -18,7 +18,6 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
-    binding.pry
   end
 
   def update
