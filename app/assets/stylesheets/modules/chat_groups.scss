@@ -32,7 +32,7 @@ body,html {
       width: 260px;
       padding: 0 20px;
       background-color: $bgLeftTop;
-      position: relative;
+      position: fixed;
       .name {
         height: 20px;
         padding-top: 35px;
@@ -56,7 +56,7 @@ body,html {
     &__bottom {
       height: 100%;
       width: 260px;
-      padding: 0 20px;
+      padding: 100px 20px 0;
       background-color: $bgLeftBottom;
       ul li {
         .gname {
@@ -81,6 +81,8 @@ body,html {
       padding: 0 40px ;
       text-align: left;
       border-bottom: 1px solid #eee;
+      position: fixed;
+      background-color: $white;
       .gpname {
         height: 20px;
         padding-top: 35px;
@@ -97,7 +99,7 @@ body,html {
     &__bottom {
       height: calc(100% - 130px);
       width: 100%;
-      padding: 0 40px;
+      padding: 100px 40px;
       ul li {
         .chatName {
           font-size: 16px;
