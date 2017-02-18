@@ -8,14 +8,15 @@ class MessagesController < ApplicationController
   end
 
   def create
-
-    Message.create(create_params)
+    @message = Message.new(user_id: current_user.id,group_id: params[:group_id])
+    @message.update(message_params)
+    flash[:notice] = "送信失敗！"  unless  @message.save
     redirect_to action: 'index'
   end
 
   private
 
-  def create_params
-    params.require(:message).permit(:text,:image).merge(group_id: params[:group_id], user_id: current_user.id)
+  def message_params
+    params.require(:message).permit(:text,:image)
   end
 end
