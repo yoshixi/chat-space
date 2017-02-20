@@ -10,4 +10,5 @@
   .contents__left__bottom
     .box20
     %ul
-      = render @groups
+      - if @groups.present?  
+        = render @groups
