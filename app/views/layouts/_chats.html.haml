@@ -1,0 +1,25 @@
+.wrap
+  .contents
+    = render 'layouts/sidebar'
+    .contents__right
+      .wrap
+        .contents__right__top
+          %p.gpname
+            = @group.name if @group
+          %p.members
+            %span Members:
+            = render partial: 'messages/member', collection: @members
+        .contents__right__bottom
+          .box46
+          - if @messages
+            %ul
+              = render @messages
+
+  - if controller.controller_name == "messages"
+    .footer
+      .leftbox
+      = form_for @message, url: {action: 'create'},html:{class: 'postArea'} do |f|
+        .msgbox
+          = f.text_field :text,  placeholder: "  type a text", class: "msg"
+          %i.fa.fa-picture-o
+        = f.submit  value: "Send", class: "btn", disable_with: "submiting"

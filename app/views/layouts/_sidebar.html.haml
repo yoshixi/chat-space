@@ -1,0 +1,14 @@
+.contents__left
+  .contents__left__top
+    %p.name
+      = current_user.name
+    %p.awesome
+      = link_to  new_group_path do
+        %i.fa.fa-pencil-square-o
+      = link_to edit_user_registration_path do
+        %i.fa.fa-cog
+  .contents__left__bottom
+    .box20
+    %ul
+      - if @groups.present?  
+        = render @groups
