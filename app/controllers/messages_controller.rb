@@ -8,15 +8,14 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(user_id: current_user.id,group_id: params[:group_id])
-    @message.update(message_params)
-    flash[:notice] = "送信失敗！"  unless  @message.save
+    @message = current_user.messages.new(message_params)
+    flash[:notice] = @message.errors.full_messages  unless  @message.save
     redirect_to action: 'index'
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:text,:image)
+    params.require(:message).permit(:text,:image).merge(group_id: params[:group_id])
   end
 end
