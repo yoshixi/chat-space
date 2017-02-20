@@ -9,7 +9,11 @@ class MessagesController < ApplicationController
 
   def create
     @message = current_user.messages.new(message_params)
-    flash[:notice] = @message.errors.full_messages  unless  @message.save
+    if !@message.save
+      @message.errors.full_messages.each do |e|
+        flash[:notice] = e
+      end
+    end
     redirect_to action: 'index'
   end
 
