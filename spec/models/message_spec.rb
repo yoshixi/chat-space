@@ -1,4 +1,6 @@
 require 'rails_helper'
+require 'support/controller_macros'
+
 describe Message do
   describe '#create' do
     it "is invalid without a text" do
