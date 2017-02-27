@@ -22,6 +22,9 @@ header {
     color: $white;
   }
 }
+.header.alert {
+  background-color: red;
+}
 .wrap {
   height: calc(100% - 30px);
   width: 100%;

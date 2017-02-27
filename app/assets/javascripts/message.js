@@ -1,6 +1,6 @@
 $(function() {
+
   function buildHTML(message) {
-    console.log(message);
     var addHtml = '<p class="chatName">' + message.name  +
                   '<span class="time">'  + message.created_at  + '</span></p>' +
                   '<p class="message">'  + message.text  + '</p>';
@@ -8,6 +8,7 @@ $(function() {
     var html = $('<li class="message">').append(addHtml);
     return html;
   }
+
   function errorHtml(msg) {
     var addHtml = '<div class="header alert"><p class="header__txt">' + msg + '</p></div>'
     return addHtml
@@ -33,12 +34,11 @@ $(function() {
           var html = errorHtml(msg)
           $('header').append(html);
         })
-        $form[0].reset();
       }else{
         var html = buildHTML(data);
         $('.messages').append(html);
-        $form[0].reset();
       }
+      $form[0].reset();
     })
     .fail(function(){
         alert('error');
