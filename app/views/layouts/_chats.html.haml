@@ -12,14 +12,14 @@
         .contents__right__bottom
           .box46
           - if @messages
-            %ul
+            %ul.messages
               = render @messages
 
   - if controller.controller_name == "messages"
     .footer
       .leftbox
-      = form_for @message, url: {action: 'create'},html:{class: 'postArea'} do |f|
+      = form_for @message, url: {action: 'create'},html:{class: 'postArea  js-form', id: 'form'} do |f|
         .msgbox
-          = f.text_field :text,  placeholder: "  type a text", class: "msg"
+          = f.text_field :text,  placeholder: "  type a text", class: "msg js-form__text-field"
           %i.fa.fa-picture-o
         = f.submit  value: "Send", class: "btn", disable_with: "submiting"

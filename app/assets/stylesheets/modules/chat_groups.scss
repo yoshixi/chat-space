@@ -9,6 +9,11 @@
 body,html {
   height: 100%;
 }
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
 .header {
   height: 30px;
   background-color: $lightBlue;
@@ -16,6 +21,9 @@ body,html {
   &__txt {
     color: $white;
   }
+}
+.header.alert {
+  background-color: red;
 }
 .wrap {
   height: calc(100% - 30px);
