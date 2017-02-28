@@ -3,6 +3,6 @@ if @message.errors.blank?
   json.name @message.user.name
 else
   json.error @message.errors.full_messages do |message|
-  json.message message
-end
+    json.message message
+  end
 end
