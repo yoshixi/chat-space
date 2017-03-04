@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
     binding.pry
     @group =  Group.new(group_params)
      if @group.save
+      @group.users << current_user
        redirect_to action: 'index'
      else
        render :new
@@ -33,7 +34,8 @@ class GroupsController < ApplicationController
   end
 
   def search
-    @users  = search_name
+    @users  = Group.search_name(params[:word],current_user)
+
   end
   private
 

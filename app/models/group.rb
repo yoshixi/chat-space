@@ -5,7 +5,7 @@ class Group < ApplicationRecord
 
   validates :name,  presence: true
 
-  def search_name
-    User.where(name: 'Eren Yeager')
+  def self.search_name(word,current_user)
+    User.where("name like '%" + word + "%'").where.not(id: current_user.id)
   end
 end
