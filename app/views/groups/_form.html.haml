@@ -9,7 +9,7 @@
       = f.label :name, "チャットメンバーを追加", class: "chat-group-form__label"
     .chat-group-form__field--right
       %p.input-form
-        = f.text_field :name, class: "chat-group-form__input user-search", placeholder: "メンバー名を入力してください"
+        %input.chat-group-form__input.user-search{ placeholder: "メンバー名を入力してください", type: "text"}
       %ul.searchlists
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
@@ -18,9 +18,9 @@
       -if controller.action_name == "new"
         %p.chat-member= current_user.name
       -else
-        - @group.users.each do |u|
-          %p.chat-member= u.name
-      %ul.saveLists
+        %ul.saveLists
+          - @group.users.each do |u|
+            %li.chat-memberi{data-id: "#{u.id}"}= u.name
   .chat-group-form__field.clearfix
     .chat-group-form__field--right
       = f.submit :name, value: "SAVE", disable_with: "Save Now ...", class: "chat-group-form__action-btn"

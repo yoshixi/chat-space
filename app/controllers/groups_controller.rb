@@ -9,7 +9,6 @@ class GroupsController < ApplicationController
   end
 
   def create
-    binding.pry
     @group =  Group.new(group_params)
      if @group.save
       @group.users << current_user
@@ -27,7 +26,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update_attributes(group_params)
-      redirect_to :index
+      redirect_to action: 'index'
     else
       render :edit
     end
