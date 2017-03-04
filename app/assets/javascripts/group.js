@@ -3,6 +3,7 @@ $(function () {
   var usersName = [];
   var usersId = [];
   var savedUserId = [];
+  var preFunc;
 
   function appendList(id,name) {
       var item = $('<li class="list" data-id="'+ id +'" data-name="' + name +'">')
@@ -11,23 +12,7 @@ $(function () {
       item.append('<a class="addBtn" href="javascript:void(0)" >追加</a>')
       $('ul.searchlists').append(item);
   }
-
-  function editElement(e) {
-    var re = "^" + e
-    return re
-  }
-
-  function addEle(data) {
-    var i = 1;
-    data.forEach(function (e) {
-      usersName.push(e.name);
-      usersId.push(e.id);
-      i ++;
-    });
-    savedUserId = Array.apply(null, Array(i)).map(function () {return 0 });
-    console.log(usersId);
-  }
-
+  
   function saveUsers(id,name) {
     var save = $(`<input type="hidden" name="group[user_ids][]" value="${id}" >`);
     var item = $(`<li class="list" data-id=${id} data-name=${name}>`);
@@ -36,31 +21,25 @@ $(function () {
     item.append(save);
     $('ul.saveLists').append(item);
   };
-
-  $.ajax({
-    type: 'get',
-    url: '/groups/search',
-    dataType: 'json',
-    timeout: 10000
-  })
-  .done(function(data){
-    addEle(data);
-  })
-
+ function ajaxPost(e) {
+   $.ajax({
+     type: 'get',
+     url: '/groups/search',
+     data: {word: e},
+     dataType: 'json',
+     timeout: 500
+   })
+   .done(function(data){
+     addEle(data);
+   });
+ }
   $('.user-search').on('keyup', function(){
-    var input = $(this).val();
-    var inputs = input.split(" ").filter(function (e) {return e;});
-    var inputsNew = inputs.map(editElement)
-    var word = inputsNew.join("|");
-    var reg = new RegExp(inputsNew.join("|"));
-    $('li').remove('.list')
-    if (word != preWord && input.length !== 0) {
-    usersName.forEach(function (e,i,ar) {
-        if(e.match(reg) && savedUserId[i] === 0) {
-          appendList(i+1,e );
-        }
-    });//each
-  }
+    var word = $.trim($(this).val());
+    $('li').remove('.list');
+    if(preWord !== word){
+      clearTimeout(preFunc);
+      preFunc = ajaxPost(word);
+    }
     preWord = word;
   });
 

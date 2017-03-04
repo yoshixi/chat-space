@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
   end
 
   def search
-    @users  = User.all
+    @users  = search_name
   end
   private
 
