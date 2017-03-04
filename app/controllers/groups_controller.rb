@@ -5,9 +5,11 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @users = User.all
   end
 
   def create
+    binding.pry
     @group =  Group.new(group_params)
      if @group.save
        redirect_to action: 'index'
@@ -18,6 +20,7 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    @users = @group.users
   end
 
   def update
@@ -29,6 +32,9 @@ class GroupsController < ApplicationController
     end
   end
 
+  def search
+    @users  = User.all
+  end
   private
 
   def group_params

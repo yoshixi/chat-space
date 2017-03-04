@@ -60,11 +60,28 @@
         height: 50px;
         line-height: 50px;
         border-bottom: 1px solid #ddd;
+        padding-left: 18px;
       }
-      .users-all {
+      .input-form {
+        height: 54px;
+      }
+      .list {
         height: 50px;
         line-height: 50px;
         border-bottom: 1px solid #ddd;
+        padding: 0 18px;
+        a.addBtn {
+          float: right;
+          color: $lightBlue;
+          font-size: 15px;
+          text-decoration: none;
+        }
+        a.rmBtn {
+          float: right;
+          color: red;
+          font-size: 15px;
+          text-decoration: none;
+        }
       }
     }
 

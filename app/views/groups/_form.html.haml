@@ -8,9 +8,9 @@
     .chat-group-form__field--left
       = f.label :name, "チャットメンバーを追加", class: "chat-group-form__label"
     .chat-group-form__field--right
-      .chat-group-form__search.clearfix
-        = f.collection_check_boxes :user_ids, User.all, :id, :name
-      #user-search-result
+      %p.input-form
+        = f.text_field :name, class: "chat-group-form__input user-search", placeholder: "メンバー名を入力してください"
+      %ul.searchlists
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :name, "チャットメンバー", class: "chat-group-form__label"
@@ -20,6 +20,7 @@
       -else
         - @group.users.each do |u|
           %p.chat-member= u.name
+      %ul.saveLists
   .chat-group-form__field.clearfix
     .chat-group-form__field--right
       = f.submit :name, value: "SAVE", disable_with: "Save Now ...", class: "chat-group-form__action-btn"
