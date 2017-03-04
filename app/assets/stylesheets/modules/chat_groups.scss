@@ -103,6 +103,22 @@ header {
         height: 12px;
         color: #999;
       }
+      .geditBtn {
+        position: absolute;
+        left: 62%;
+        top: 20px;
+        height: 40px;
+        width: 70px;
+        border: solid 1px $lightBlue;
+        text-align: center;
+        line-height: 40px;
+        a {
+          text-decoration: none;
+          color: $lightBlue;
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
     &__bottom {
       height: calc(100% - 130px);

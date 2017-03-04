@@ -9,6 +9,9 @@
           %p.members
             %span Members:
             = render partial: 'messages/member', collection: @members
+          - if @group
+            %p.geditBtn
+              = link_to "Edit",edit_group_path(@group)
         .contents__right__bottom
           .box46
           - if @messages
