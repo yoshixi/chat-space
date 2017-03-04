@@ -32,9 +32,9 @@ class GroupsController < ApplicationController
   end
 
   def search
-    @users  = Group.search_name(params[:word],current_user)
-
+    @users  = Group.search_user(params[:word],current_user)
   end
+
   private
 
   def group_params
