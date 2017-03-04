@@ -11,7 +11,6 @@ class GroupsController < ApplicationController
   def create
     @group =  Group.new(group_params)
      if @group.save
-      @group.users << current_user
        redirect_to action: 'index'
      else
        render :new

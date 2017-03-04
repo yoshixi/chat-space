@@ -6,11 +6,10 @@ $(function () {
   var preFunc;
 
   function appendList(id,name) {
-      var item = $('<li class="list" data-id="'+ id +'" data-name="' + name +'">')
-      console.log(item);
-      item.append('<span>'+ name +'</span>')
-      item.append('<a class="addBtn" href="javascript:void(0)" >追加</a>')
-      $('ul.searchlists').append(item);
+    var item = $('<li class="list" data-id="'+ id +'" data-name="' + name +'">')
+    item.append('<span>'+ name +'</span>')
+    item.append('<a class="addBtn" href="javascript:void(0)" >追加</a>')
+    $('ul.searchlists').append(item);
   }
 
   function saveUsers(id,name) {
@@ -38,6 +37,11 @@ $(function () {
      timeout: 500
    })
    .done(function(data){
+     $('ul.saveLists').find('li').each(function(i,e){
+       var id = $(e).attr('data-id');
+       savedUserId[id] = true;
+     });
+
      for(var i in data){
        if(!savedUserId[data[i].id]){
          appendList(data[i].id,data[i].name);
@@ -48,7 +52,7 @@ $(function () {
  }
   $('.user-search').on('keyup', function(){
     var word = $.trim($(this).val());
-    $('li').remove('.list');
+    $('li').remove('.searchlists .list');
     if(preWord !== word){
       clearTimeout(preFunc);
       preFunc = ajaxPost(word);
@@ -61,14 +65,12 @@ $(function () {
     var saveId = $(this).parent().attr('data-id');
     $(this).parent('.list').remove();
     savedUserId[saveId] = true;
-    console.log(savedUserId);
     saveUsers(saveId, saveName);
   });
 
   $(document).on('click', '.rmBtn', function(){
     var li  = $(this).parent();
     var rmId = li.attr('data-id')
-    console.log(rmId);
     savedUserId[rmId] = false;
     li.remove();
   });

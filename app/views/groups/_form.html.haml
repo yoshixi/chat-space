@@ -15,12 +15,15 @@
     .chat-group-form__field--left
       = f.label :name, "チャットメンバー", class: "chat-group-form__label"
     .chat-group-form__field--right
-      -if controller.action_name == "new"
-        %p.chat-member= current_user.name
-      -else
-        %ul.saveLists
-          - @group.users.each do |u|
-            %li.chat-memberi{data-id: "#{u.id}"}= u.name
+      %ul.saveLists
+        %li.list=current_user.name
+        %input{type: "hidden", name: "group[user_ids][]", value: "#{current_user.id}"}
+        - @group.users.each do |u|
+          - unless u.id == current_user.id
+            %li.list{"data-id": "#{u.id}"}
+              =u.name
+              %a.rmBtn{href: "javascript:void(0)"}　削除
+              %input{type: "hidden",name: "group[user_ids][]", value: "#{u.id}"}
   .chat-group-form__field.clearfix
     .chat-group-form__field--right
       = f.submit :name, value: "SAVE", disable_with: "Save Now ...", class: "chat-group-form__action-btn"
