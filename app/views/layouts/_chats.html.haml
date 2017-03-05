@@ -24,5 +24,7 @@
       = form_for @message, url: {action: 'create'},html:{class: 'postArea  js-form', id: 'form'} do |f|
         .msgbox
           = f.text_field :text,  placeholder: "  type a text", class: "msg js-form__text-field"
-          %i.fa.fa-picture-o
+          %i.fa
+            = f.label :image,class: "fa fa-picture-o"
+            = f.file_field :image
         = f.submit  value: "Send", class: "btn", disable_with: "submiting"
