@@ -141,6 +141,9 @@ header {
           color: $msgColor;
           margin-bottom: 45px;
         }
+        .image img{
+          max-width: 200px;
+        }
       }//ul li
 
     }
@@ -178,6 +181,9 @@ header {
           position: absolute;
           top: 40%;
           right: 20px;
+        }
+        #message_image {
+          display: none;
         }
       }
       .btn {

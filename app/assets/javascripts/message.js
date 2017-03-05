@@ -1,10 +1,10 @@
 $(function() {
 
   function buildHTML(message) {
-    var addHtml = '<p class="chatName">' + message.name  +
-                  '<span class="time">'  + message.created_at  + '</span></p>' +
-                  '<p class="message">'  + message.text  + '</p>';
-
+    var addHtml = '<p class="chatName">'        + message.name       +
+                  '<span class="time">'         + message.created_at + '</span></p>' +
+                  '<p class="message">'         + message.text       + '</p>'        +
+                  '<p class="image"><img src="' + message.image.url  +'"></p>';
     var html = $('<li class="message">').append(addHtml);
     return html;
   }
@@ -17,15 +17,18 @@ $(function() {
   $('form.js-form').on('submit', function(e) {
     e.preventDefault();
     var $form = $(this);
+    var fd = new FormData($form[0]);
     var textField = $('.js-form__text-field');
     var message = textField.val();
     $('.header.alert').remove();
     $.ajax({
       type: 'post',
       url: './messages',
-      data: $form.serialize() ,
+      data: fd,
       dataType: 'json',
-      timeout: 10000
+      timeout: 10000,
+      processData: false,
+      contentType: false
     })
     .done(function(data){
       if(data.error){
