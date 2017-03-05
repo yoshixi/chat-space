@@ -1,12 +1,20 @@
 $(function() {
 
-  function buildHTML(message) {
+  function buildHtml(message) {
     var addHtml = '<p class="chatName">'        + message.name       +
                   '<span class="time">'         + message.created_at + '</span></p>' +
-                  '<p class="message">'         + message.text       + '</p>'        +
-                  '<p class="image"><img src="' + message.image.url  +'"></p>';
+                  '<p class="message">'         + message.text       + '</p>'        ;
+
+    if (message.image.url) {
+      addHtml += '<p class="image"><img src="' + message.image.url  +'"></p>';
+    };
     var html = $('<li class="message">').append(addHtml);
     return html;
+  }
+
+  function addHtml(e) {
+    var html =  buildHtml(e)
+    $('.messages').append(html);
   }
 
   function errorHtml(msg) {
@@ -38,8 +46,7 @@ $(function() {
           $('header').append(html);
         })
       }else{
-        var html = buildHTML(data);
-        $('.messages').append(html);
+        addHtml(data)
       }
       $form[0].reset();
     })
@@ -48,4 +55,24 @@ $(function() {
      });
     return false;
   });
+
+
+  function loadPage() {
+    $.ajax({
+      type: 'get',
+      url: './messages',
+      dataType: 'json',
+    })
+    .done(function (data) {
+      for(var e in data){
+        addHtml(e)
+        };
+    })
+    .fail(function () {
+      alert('自動更新できませんでした');
+    })
+  }
+
+  setInterval(loadPage, 5000);
+
 });
