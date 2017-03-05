@@ -64,7 +64,6 @@ $(function() {
       dataType: 'json',
     })
     .done(function (data) {
-      console.log(data);
       for(var e in data){
         addHtml(e)
         };
