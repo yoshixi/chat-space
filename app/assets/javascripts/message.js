@@ -6,7 +6,7 @@ $(function() {
                   '<p class="message">'         + message.text       + '</p>'        ;
 
     if (message.image.url) {
-        addHtml += '<p class="image"><img src="' + message.image.url  +'"></p>';
+      addHtml += '<p class="image"><img src="' + message.image.url  +'"></p>';
     };
     var html = $('<li class="message">').append(addHtml);
     return html;
@@ -57,7 +57,6 @@ $(function() {
   });
 
 
-
   function loadPage() {
     $.ajax({
       type: 'get',
@@ -68,6 +67,9 @@ $(function() {
       for(var e in data){
         addHtml(e)
         };
+    })
+    .fail(function () {
+      alert('自動更新できませんでした');
     })
   }
 
