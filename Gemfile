@@ -62,3 +62,6 @@ group :development do
   gem 'erb2haml'
   gem 'web-console', '~> 2.0'
 end
+group :production do
+  gem 'unicorn'
+end
